@@ -1,0 +1,464 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>FiloArts+</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/logo.jpg' %}" rel="icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top ">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">
+         <img src="{% static 'assets/img/logo.jpg' %}" alt="">
+        <h1 class="sitename">FiloArts+</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#kidloom">Kidloom</a></li>
+          <li><a href="#qualicent">Qualicent</a></li>
+          <li><a href="#taskhive">TaskHive</a></li>
+          <li><a href="{% url 'gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'blogs' %}">Blogs</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div class="info d-flex align-items-center">
+        <div class="container">
+          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-6 text-center">
+              <h2>The Pinnacle of Creative Solutions </h2>
+                <h3>Welcome to FiloArts+.</h3>
+            </div>
+              <div class="container">
+              <p><h4>We are a creativity and innovation company that inspires,educates and solves through three powerful pillars: Kidloom, Qualicent and TaskHive. Our Mission is to craft a brighter
+                  more creative future by empowering young minds, producing world-class art and solving real world challenges.</h4></p>
+
+                  </div>
+                <br>
+              <div class="col-lg-6 text-center">
+                <p> <b>Explore Creativity, Experience Innovation, Shape the Future.</b></p>
+              <a href="#about" class="btn-get-started">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </section>
+       <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>Who we are</p>
+      </div><!-- End Section Title -->
+
+      <div class="container ">
+
+
+            <p>
+             <h3>FiloArts+ is dedicated to transforming creativity into action. Through Kidloom, we nurture young innovators. In Qualicent,
+                we craft diverse, sustainable art products. With TaskHive, we execute impactful projects to solve today's and tomorrow's challenges.</p>
+
+      </h3>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+       <!-- Mission & Vision -->
+    <section id="services" class="services section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Mission</h2>
+
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-mountain-city"></i>
+              </div>
+              <h3>Our Mission</h3>
+              <p>To nurture young minds into top creativity and innovators. Produce Top-Quality sustainable art and innovation that creates lasting change .</p>
+
+            </div>
+          </div><!-- End Mission Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-arrow-up-from-ground-water"></i>
+              </div>
+              <h3>Our Vision</h3>
+              <p>To be the ultimate hub for creativity, innovation and solutions.</p>
+            </div>
+          </div><!-- End Vision Item -->
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-compass-drafting"></i>
+              </div>
+              <h3>Our Values</h3>
+                <ul>
+                    <li>Creativity and Excellence.</li>
+                    <li>Innovation and sustainability.</li>
+                    <li>Empowerment and Community.</li>
+
+                </ul>
+
+            </div>
+          </div><!-- End Our_Vision Item -->
+
+            </div>
+
+
+      </div>
+        <hr>
+        <br><br>
+
+    </section><!-- /Mission Section -->
+
+<section id="kidloom" >
+       <div class="info d-flex align-items-center">
+        <div class="container">
+          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+<div class="container section-title" data-aos="fade-up">
+
+
+        <h2>Kidloom</h2>
+
+      </div><!-- End Section Title -->
+
+
+            </div>
+            <div class="col-lg-13 text-center">
+              <div class="container">
+              <p><h4>Inspiring the next generation of innovators. <br> Kidloom complements the school system by turning theory into practice.
+                  Through creative and innovation programs, we empower children to think critically, act creatively and make a difference.</h4></p>
+
+                  </div>
+                <br>
+              <div class="col-lg-13 text-center">
+              <a href="/kidloom" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br> <br>
+    </section>
+
+{#      Qualicent Section#}
+      <hr>
+
+    <section id="qualicent"  class="light-background" >
+
+       <div  class="info d-flex align-items-center">
+        <div class="container">
+          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+<div class="container section-title" data-aos="fade-up">
+
+        <h2>Qualicent</h2>
+    <h4>Crafting Art that lasts a lifetime.</h4>
+
+      </div><!-- End Section Title -->
+            </div>
+
+              <div class="container">
+                   <p> <h4>In Qualicent, we produce high-quality, diverse and sustainable art. Our creations span drawings and Paintings,
+                  scriptures and crafts showcasing excellence and creativity. <br>
+                  Explore our art:
+
+                  <ul>
+                     <li>Paintings</li>
+                      <li>Scriptures</li>
+                      <li>Custom Crafts</li>
+                  </ul>
+
+                  </h4>
+
+                  </div>
+                <br>
+              <div class="col-lg-13 text-center">
+              <a href="/qualicent" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        </section>
+            <hr>
+      <br>
+
+
+
+{#      TaskHive Section#}
+
+
+
+    <section id="taskhive" >
+
+       <div  class="info d-flex align-items-center">
+        <div class="container">
+          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+<div class="container section-title" data-aos="fade-up">
+
+        <h2>TaskHive</h2>
+    <h4>Where ideas solve real world challenges.</h4>
+
+      </div><!-- End Section Title -->
+            </div>
+
+              <div class="container">
+                   <p> <h4>TaskHive is our project execution hub. We tackle social, physical and emotional challenges through innovative solutions.
+                  Kids from kidloom and our wider network of creatives join forces to make an impact.<br>
+
+                  </h4>
+
+                  </div>
+                <br>
+              <div class="col-lg-13 text-center">
+              <a href="/taskhive" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        </section>
+            <hr>
+
+      <br>
+
+
+      {#  end TaskHive Section#}
+
+
+
+
+
+  <!-- Contact Section -->
+    <section id="contact" class="contact section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact Us</h2>
+        <p>Let's connect</p> <br> <br>
+         <h4>Have questions or want to collaborate? Reach out to us.</h4>
+
+      </div><!-- End Section Title -->
+
+
+      <div class="container" data-aos="fade" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Address</h3>
+                <p>Nairobi, Kenya</p>
+              </div>
+            </div><!-- End contact Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+254 741 232 719</p>
+              </div>
+            </div><!-- End contact Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>contact@filoartsplus.com</p>
+              </div>
+            </div><!-- End contact Item -->
+
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+
+
+                <div class="col-md-6">
+                    <label> <b>Name</b></label>
+                  <input type="text" name="name" class="form-control"  required="">
+                </div>
+                <br>
+
+                <div class="col-md-6 ">
+                <label> <b>Email</b></label>
+                  <input type="email" class="form-control" name="email"  required="">
+                </div>
+                <br>
+
+
+                <div class="col-md-12">
+                     <label><b>Message</b> </label>
+                  <textarea class="form-control" name="message" rows="6"  required=""></textarea>
+                </div>
+                <br>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+
+
+      <hr>
+
+
+
+  </main>
+
+  <footer id="footer" class="footer ">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-6 footer-about">
+          <a href="/" class="logo d-flex align-items-center">
+            <span class="sitename">FiloArts+</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>Nairobi, Kenya</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+254 741 232 719</span></p>
+            <p><strong>Email:</strong> <span>contact@filoartsplus.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href={% url 'gallery' %}>Gallery</a></li>
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4> Key components </h4>
+          <ul>
+            <li><a href="/kidloom">Kidloom</a></li>
+            <li><a href="/qualicent">Qualicent</a></li>
+            <li><a href="/taskhive">TaskHive</a></li>
+
+          </ul>
+        </div>
+
+
+
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+
+        Designed by <a href="https://stephen-otieno.github.io/MyWebpage1/" class="credits1"><b>StemiotSoftwares</b></a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

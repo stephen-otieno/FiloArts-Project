@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/FiloArts.iml" filepath="$PROJECT_DIR$/.idea/FiloArts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../WebDevelopment/Django/Gender_Equality/.idea/Gender_Equality.iml" filepath="$PROJECT_DIR$/../../WebDevelopment/Django/Gender_Equality/.idea/Gender_Equality.iml" />
+    </modules>
+  </component>
+</project>
