@@ -11,7 +11,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/logo.jpg' %}" rel="icon">
+  <link href="{% static 'assets/img/logo.png' %}" rel="icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -38,7 +38,7 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
-         <img src="{% static 'assets/img/logo.jpg' %}" alt="">
+         <img src="{% static 'assets/img/logo.png' %}" alt="">
         <h1 class="sitename">FiloArts+</h1>
       </a>
 
@@ -52,6 +52,7 @@
           <li><a href="{% url 'gallery' %}">Gallery</a></li>
           <li><a href="{% url 'blogs' %}">Blogs</a></li>
           <li><a href="#contact">Contact Us</a></li>
+          <li><a href="{% url 'clients' %}">Clients</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -335,34 +336,36 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form action="/client_data/" method="post" class="client-form"  data-aos="fade-up" data-aos-delay="200">
 
 
-                <div class="col-md-6">
+                {% csrf_token %}
+
+                <div class="col-md-7">
                     <label> <b>Name</b></label>
-                  <input type="text" name="name" class="form-control"  required="">
+                  <input type="text" name="client_name" class="form-control"  required="">
                 </div>
                 <br>
 
-                <div class="col-md-6 ">
+                <div class="col-md-7 ">
                 <label> <b>Email</b></label>
-                  <input type="email" class="form-control" name="email"  required="">
+                  <input type="email" class="form-control" name="client_email"  required="">
                 </div>
                 <br>
 
 
                 <div class="col-md-12">
                      <label><b>Message</b> </label>
-                  <textarea class="form-control" name="message" rows="6"  required=""></textarea>
+                  <textarea class="form-control" name="client_message" rows="6"  required=""></textarea>
                 </div>
                 <br>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+{#                  <div class="loading">Loading</div>#}
+{#                  <div class="error-message"></div>#}
+{#                  <div class="sent-message">Your message has been sent. Thank you!</div>#}
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit" class="submit_btn">Send Message</button>
                 </div>
 
 

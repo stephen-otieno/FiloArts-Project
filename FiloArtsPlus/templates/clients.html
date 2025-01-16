@@ -1,9 +1,10 @@
+
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-       <meta charset="utf-8">
+  <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>FiloArts+</title>
   <meta name="description" content="">
@@ -27,10 +28,14 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+
+
 </head>
 
 <body class="index-page">
- <header id="header" class="header d-flex align-items-center fixed-top">
+
+  <header id="header" class="header d-flex align-items-center fixed-top ">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
@@ -48,40 +53,58 @@
           <li><a href="{% url 'gallery' %}">Gallery</a></li>
           <li><a href="{% url 'blogs' %}">Blogs</a></li>
           <li><a href="{% url 'homepage' %}#contact">Contact Us</a></li>
+          <li><a href="{% url 'clients' %}">Admin</a></li>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
     </div>
-
- </header>
-
-  <main class="main">
-
-       <!-- Recent Blog Posts Section -->
-    <section id="recent-blog-posts" class="recent-blog-posts section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up"><br><br>
-          <br>
-        <h2>Recent Blog Posts</h2>
-        <p>FiloArts+ Recent blogs</p>
-      </div><!-- End Section Title -->
+  </header>
+  <br><br><br><br><br>
 
 
+  <div class="container"><br>
+
+
+      <h3>Clients Data</h3>
+
+      <table class="table table-bordered table-hover  table-warning"><br>
+
+    <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+
+    </tr>
+
+          {% for client in clients %}
+
+               <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ client.filled_at|date:"F j, Y" }}</td>
+        <td>{{ client.client_name }}</td>
+        <td>{{ client.client_email }}</td>
+        <td>{{ client.client_message }}</td>
+
+    </tr>
+
+
+          {% endfor %}
 
 
 
+</table>
 
-    </section><!-- /Recent Blog Posts Section -->
+  </div>
 
 
 
-  </main>
- <br> <br> <br> <br> <br> <br>
- <footer>
+<footer><br><br><br>
 
- <div class="container copyright text-center mt-4">
+    <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
 
@@ -111,5 +134,4 @@
   <script src="{% static 'assets/js/main.js' %}"></script>
 
 </body>
-
 </html>
