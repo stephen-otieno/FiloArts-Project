@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from FiloArtsPlus.models import Client
+from FiloArtsPlus.models import Client,Drawing
 from .forms import CustomLoginForm
 
 
@@ -9,7 +9,8 @@ def index(request):
     return render(request, 'index.html')
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    drawings = Drawing.objects.all()
+    return render(request, 'gallery.html', {'drawings':drawings})
 
 def blogs(request):
     return render(request, 'blogs.html')
@@ -35,7 +36,6 @@ def client_data(request):
 
 # Function for the clients table
 
-
 @login_required(login_url='login')
 def view_clients(request):
     clients = Client.objects.all()
@@ -57,5 +57,28 @@ def custom_login_view(request):
     else:
         form = CustomLoginForm()
     return render(request, 'login.html', {'form': form})
+
+# Function to capture and plot drawing uploads
+def drawing_upload(request):
+    if request.method == 'POST':
+        drawing_name = request.POST['drawing_name']
+        drawing_artist = request.POST['drawing_artist']
+        drawing_price = request.POST['drawing_price']
+        drawing_img = request.FILES['drawing_img']
+
+        drawing = Drawing(
+            drawing_name=drawing_name,
+            drawing_artist=drawing_artist,
+            drawing_price=drawing_price,
+            drawing_img=drawing_img,
+
+        )
+
+        drawing.save()
+        return redirect('/')
+
+    return render(request, 'drawing_upload.html')
+
+
 
 # Create your views here.

@@ -25,46 +25,52 @@
     <nav class="login">
 
 
-        <form method="post" action="{% url 'login' %}" class="client-form" >
+        <form  action="/drawing_upload/" method="post" class="client-form" enctype="multipart/form-data" >
             {% csrf_token %}
 
-         <h1 class="hd1">Login</h1><br><br>
+         <h1 class="hd1">Upload Item</h1><br><br>
 
 
 
                 <div class="col-md-12">
-                    <label> <b>Username</b>
-                        <input type="text" name="username" class="form-control" required >
+                    <label> <b>Item Label</b>
+                        <input type="text" name="drawing_name" class="form-control" required >
                     </label>
                 </div>
                 <br>
 
+             <div class="col-md-12">
+                    <label> <b>Artist</b>
+                        <input type="text" name="drawing_artist" class="form-control" required >
+                    </label>
+                </div>
+                <br>
+
+
                 <div class="col-md-12 ">
-                <label> <b>Password</b>
-                     <input type="password" class="form-control" name=password  required >
+                <label> <b>Price</b>
+                     <input type="number" class="form-control" name="drawing_price" required >
                 </label> <br><br>
-                    <br><br>
+
+                     <div class="col-md-12 ">
+                <label> <b>Item</b>
+                     <input type="file" class="form-control" name="drawing_img" required >
+                </label> <br><br>
 
 
                 <div class=" login_btn col-md-12 text-center">
 
 
                     <a href="{% url 'homepage' %}"> <button type="button" class="submit_btn"> Back</button> </a>
-                    <button type="submit" class="submit_btn">Submit</button>
+                    <button type="submit" class="submit_btn">Upload</button>
 
+                </div>
 
                 </div>
                 <br>
 
 
-
-
-
- {% if form.errors %}
-
-        <p style="color: red"><b>Invalid username or password</b></p>
-
- {% endif %}
+                </div>
 
         </form>
 

@@ -14,4 +14,12 @@ class Client(models.Model):
         return self.client_name
 
 
+class Drawing(models.Model):
+    drawing_name=models.CharField(max_length=100)
+    drawing_artist=models.CharField(max_length=50)
+    drawing_price=models.IntegerField()
+    drawing_img=models.ImageField(upload_to="drawings/")
+
+    def __str__(self):
+        return self.drawing_name
 

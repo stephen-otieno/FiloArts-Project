@@ -45,15 +45,11 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/" class="active">Home</a></li>
-          <li><a href="{% url 'homepage' %}#about">About</a></li>
-          <li><a href="{% url 'homepage' %}#kidloom">Kidloom</a></li>
-          <li><a href="{% url 'homepage' %}#qualicent">Qualicent</a></li>
-          <li><a href="{% url 'homepage' %}#taskhive">TaskHive</a></li>
-          <li><a href="{% url 'gallery' %}">Gallery</a></li>
-          <li><a href="{% url 'blogs' %}">Blogs</a></li>
-          <li><a href="{% url 'homepage' %}#contact">Contact Us</a></li>
-          <li><a href="{% url 'clients' %}">Admin</a></li>
+
+          <li><a href="{% url 'clients' %}" class="active">Clients</a></li>
+           <li><a href="{% url 'uploads' %}">Upload</a></li>
+            <li><a href="/">Home</a></li>
+
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
