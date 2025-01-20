@@ -71,6 +71,9 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 WSGI_APPLICATION = 'FiloArts.wsgi.application'
 
 
@@ -134,6 +137,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files will be collected
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/clients/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
