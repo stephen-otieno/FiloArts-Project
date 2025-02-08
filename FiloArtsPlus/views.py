@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from FiloArtsPlus.models import Client,Drawing
+from FiloArtsPlus.models import Client, Drawing, User1
 from .forms import CustomLoginForm
 
 
@@ -57,6 +57,34 @@ def custom_login_view(request):
     else:
         form = CustomLoginForm()
     return render(request, 'login.html', {'form': form})
+
+
+
+def signup_page(request):
+    if request.method == 'POST':
+        user_name = request.POST['user_name']
+        user_email = request.POST['user_email']
+        user_password1 = request.POST['user_password1']
+        user_password2 = request.POST['user_password2']
+
+        user = User1(
+            user_name = user_name,
+            user_email = user_email,
+            user_password1 =user_password1,
+            user_password2 = user_password2
+        )
+
+        user.save()
+        return redirect('login')
+
+
+
+
+
+    return render(request, 'signup.html')
+
+
+
 
 # Function to capture and plot drawing uploads
 def drawing_upload(request):
