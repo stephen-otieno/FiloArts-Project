@@ -28,30 +28,20 @@
 
 
         <form method="post" action="{% url 'login' %}" class="client-form" >
+
             {% csrf_token %}
 
-         <h1 class="hd1">Login</h1><br><br>
+              <h1 class="hd1">Login</h1><br><br>
 
 
 
-                <div class="col-md-12">
-                    <label> <b>Username</b>
-                        <input type="text" name="username" class="form-control" required >
-                    </label>
-                </div>
-                <br>
+            {{ form.as_p }}
 
-                <div class="col-md-12 ">
-                <label> <b>Password</b>
-                     <input type="password" class="form-control" name=password  required >
-                </label> <br><br>
-                    <br><br>
-
-
+            <br><br>
                 <div class=" login_btn col-md-12 text-center">
 
 
-                    <a href="{% url 'homepage' %}"> <button type="button" class="submit_btn"> Back</button> </a>
+                    <a href="{% url 'signup' %}"> <button type="button" class="submit_btn"> Back</button> </a>
                     <button type="submit" class="submit_btn"><b>Submit</b></button>
 
 
@@ -59,14 +49,6 @@
                 <br>
 
 
-                </div>
-
-
- {% if form.errors %}
-
-        <p style="color: red"><b>Invalid username or password</b></p>
-
- {% endif %}
 
         </form>
 

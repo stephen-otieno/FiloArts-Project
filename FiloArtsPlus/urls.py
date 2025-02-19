@@ -2,7 +2,6 @@ from FiloArts import settings
 from . import views
 from django.urls import path
 from django.conf.urls.static import static
-from .views import custom_login_view,view_clients
 
 urlpatterns = [
     path('', views.index, name='homepage'),
@@ -11,7 +10,7 @@ urlpatterns = [
     path('blogs/', views.blogs, name='blogs'),
     path('clients/', views.view_clients, name='clients'),
     path('signup/',views.signup_page, name='signup'),
-    path('login/', views.custom_login_view, name='login'),
+    path('login/', views.login_page, name='login'),
     path('drawing_upload/', views.drawing_upload, name='uploads'),
 ]
 

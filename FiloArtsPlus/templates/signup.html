@@ -18,22 +18,26 @@
 
         <div class="col-md-5">
     <nav class="signup">
-    <form action="{% url 'signup' %}" method="POST" class="signup_form">
-        {% csrf_token %}
+    <form action="{% url 'signup' %}" method="POST" class=" signup_form">
 
-        <h3> <b>Sign up</b></h3> <br>
+         <h3> <b>Sign up</b></h3> <br>
+        <b>  {% csrf_token %} </b>
 
-        <label><b>Name</b></label> <br>
-        <input type="text" placeholder="Enter full name" name="user_name" class="form-control" required> <br>
 
-         <label><b>Email</b></label><br>
-        <input type="email" placeholder="abc123@gmai.com" name="user_email" class="form-control" required> <br>
 
-         <label><b>Password</b></label> <br>
-        <input type="password" name="user_password1" class="form-control" required> <br>
+        {{ form.as_p }}
 
-         <label><b>Confirm Password</b></label> <br>
-        <input type="password" name="user_password2" class="form-control" required> <br>
+{#        <label><b>Name</b></label> <br>#}
+{#        <input type="text" placeholder="Enter full name" name="user_name" class="form-control" required> <br>#}
+{##}
+{#         <label><b>Email</b></label><br>#}
+{#        <input type="email" placeholder="abc123@gmai.com" name="user_email" class="form-control" required> <br>#}
+{##}
+{#         <label><b>Password</b></label> <br>#}
+{#        <input type="password" name="user_password1" class="form-control" required> <br>#}
+{##}
+{#         <label><b>Confirm Password</b></label> <br>#}
+{#        <input type="password" name="user_password2" class="form-control" required> <br>#}
 
         <button class="submit_btn" type="submit">Submit</button>
         <br><br>

@@ -39,7 +39,7 @@
 
       <a href="/" class="logo d-flex align-items-center">
          <img src="{% static 'assets/img/logo.png' %}" alt="">
-        <h1 class="sitename">FiloArts+</h1>
+        <h1 style="color: #3d0224" class="sitename">FiloArts+</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -52,7 +52,10 @@
           <li><a href="{% url 'gallery' %}">Gallery</a></li>
           <li><a href="{% url 'blogs' %}">Blogs</a></li>
           <li><a href="#contact">Contact Us</a></li>
-          <li><a href="{% url 'clients' %}">Admin</a></li>
+            {% if user.is_authenticated and user.is_superuser %}
+                 <li><a href="{% url 'clients' %}">Admin</a></li>
+            {% endif %}
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -98,20 +101,16 @@
         <p>Who we are</p>
       </div><!-- End Section Title -->
 
-      <div class="container ">
-
+      <div class="container col-lg-13 text-center" >
 
             <p>
              <h3>FiloArts+ is dedicated to transforming creativity into action. Through Kidloom, we nurture young innovators. In Qualicent,
-                we craft diverse, sustainable art products. With TaskHive, we execute impactful projects to solve today's and tomorrow's challenges.</p>
+                we craft diverse, sustainable art products. With TaskHive, we execute impactful projects to solve today's and tomorrow's challenges.
 
       </h3>
-
-
+          </p>
 
         </div>
-
-
 
     </section>
 
@@ -189,7 +188,7 @@
 
 
             </div>
-            <div class="col-lg-13 text-center">
+            <div class="col-lg-13 text-center ">
               <div class="container">
               <p><h4>Inspiring the next generation of innovators. <br> Kidloom complements the school system by turning theory into practice.
                   Through creative and innovation programs, we empower children to think critically, act creatively and make a difference.</h4></p>
@@ -225,6 +224,7 @@
                    <p> <h4>In Qualicent, we produce high-quality, diverse and sustainable art. Our creations span drawings and Paintings,
                   scriptures and crafts showcasing excellence and creativity. <br>
                   Explore our art:
+
 
                   <ul>
                      <li>Paintings</li>
@@ -434,10 +434,10 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span></p>
+{#      <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span></p>#}
       <div class="credits">
 
-        Designed by <a href="https://stemiotsoftwares.onrender.com/" style="color: red" class="credits1"><b>StemiotSoftwares</b></a>
+        Designed by <a href="https://stemiotsoftwares.onrender.com/" style="color: black" class="credits1"><b>StemiotInnovations</b></a>
       </div>
     </div>
 

@@ -1,10 +1,15 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from FiloArtsPlus.models import Client, Drawing, User1
 from .forms import CustomLoginForm
+from .forms import RegisterForm,CustomLoginForm
 
 
+
+
+@login_required(login_url='signup')
 def index(request):
     return render(request, 'index.html')
 
@@ -36,57 +41,50 @@ def client_data(request):
 
 # Function for the clients table
 
-@login_required(login_url='login')
+@login_required(login_url='signup')
 def view_clients(request):
     clients = Client.objects.all()
     return render(request, 'clients.html', {'clients':clients})
 
-def custom_login_view(request):
-    if request.method == 'POST':
-        form = CustomLoginForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('clients')  # Redirect to the clients page
-
-            else:
-                form.add_error(None, 'Invalid username or password')
-    else:
-        form = CustomLoginForm()
-    return render(request, 'login.html', {'form': form})
 
 
 
+
+# Register function
 def signup_page(request):
     if request.method == 'POST':
-        user_name = request.POST['user_name']
-        user_email = request.POST['user_email']
-        user_password1 = request.POST['user_password1']
-        user_password2 = request.POST['user_password2']
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Registration successful! Please log in.")
+            return redirect('login')
+    else:
+        form = RegisterForm()
 
-        user = User1(
-            user_name = user_name,
-            user_email = user_email,
-            user_password1 =user_password1,
-            user_password2 = user_password2
-        )
 
-        user.save()
-        return redirect('login')
+    return render(request, 'signup.html', {'form': form})
 
 
 
+# login function
+def login_page(request):
+    if request.method == 'POST':
+        form = CustomLoginForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('/')  # Redirect to the home page after successful login
+    else:
+        form = CustomLoginForm()
 
-
-    return render(request, 'signup.html')
+    return render(request, 'login.html',{'form':form})
 
 
 
 
 # Function to capture and plot drawing uploads
+
+@login_required(login_url='signup')
 def drawing_upload(request):
     if request.method == 'POST':
         drawing_name = request.POST['drawing_name']
