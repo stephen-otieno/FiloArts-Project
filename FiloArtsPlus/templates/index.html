@@ -52,9 +52,7 @@
           <li><a href="{% url 'gallery' %}">Gallery</a></li>
           <li><a href="{% url 'blogs' %}">Blogs</a></li>
           <li><a href="#contact">Contact Us</a></li>
-            {% if user.is_authenticated and user.is_superuser %}
-                 <li><a href="{% url 'clients' %}">Admin</a></li>
-            {% endif %}
+           <li><a href="{% url 'clients' %}">Admin</a></li>
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

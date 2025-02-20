@@ -9,7 +9,6 @@ from .forms import RegisterForm,CustomLoginForm
 
 
 
-@login_required(login_url='signup')
 def index(request):
     return render(request, 'index.html')
 
@@ -41,7 +40,7 @@ def client_data(request):
 
 # Function for the clients table
 
-@login_required(login_url='signup')
+@login_required(login_url='login')
 def view_clients(request):
     clients = Client.objects.all()
     return render(request, 'clients.html', {'clients':clients})
@@ -51,21 +50,21 @@ def view_clients(request):
 
 
 # Register function
-def signup_page(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Registration successful! Please log in.")
-            return redirect('login')
-    else:
-        form = RegisterForm()
-
-
-    return render(request, 'signup.html', {'form': form})
-
-
-
+# def signup_page(request):
+#     if request.method == 'POST':
+#         form = RegisterForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, "Registration successful! Please log in.")
+#             return redirect('login')
+#     else:
+#         form = RegisterForm()
+#
+#
+#     return render(request, 'signup.html', {'form': form})
+#
+#
+#
 # login function
 def login_page(request):
     if request.method == 'POST':
@@ -73,7 +72,7 @@ def login_page(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('/')  # Redirect to the home page after successful login
+            return redirect('clients')  # Redirect to the home page after successful login
     else:
         form = CustomLoginForm()
 
@@ -84,7 +83,7 @@ def login_page(request):
 
 # Function to capture and plot drawing uploads
 
-@login_required(login_url='signup')
+@login_required(login_url='login')
 def drawing_upload(request):
     if request.method == 'POST':
         drawing_name = request.POST['drawing_name']
