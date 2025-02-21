@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/FiloArts.iml" filepath="$PROJECT_DIR$/.idea/FiloArts.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../WebDevelopment/Django/Gender_Equality/.idea/Gender_Equality.iml" filepath="$PROJECT_DIR$/../../WebDevelopment/Django/Gender_Equality/.idea/Gender_Equality.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/UpConstruction/UpConstruction/.idea/UpConstruction.iml" filepath="$USER_HOME$/Downloads/UpConstruction/UpConstruction/.idea/UpConstruction.iml" />
     </modules>
   </component>
 </project>
