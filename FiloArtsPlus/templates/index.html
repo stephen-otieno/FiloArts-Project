@@ -52,7 +52,6 @@
           <li><a href="{% url 'gallery' %}">Gallery</a></li>
           <li><a href="{% url 'blogs' %}">Blogs</a></li>
           <li><a href="#contact">Contact Us</a></li>
-           <li><a href="{% url 'clients' %}">Admin</a></li>
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -173,82 +172,133 @@
 
     </section><!-- /Mission Section -->
 
-<section id="filokid" >
-       <div class="info d-flex align-items-center">
-        <div class="container">
-          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-<div class="container section-title" data-aos="fade-up">
 
 
-        <h2>FiloKid</h2>
+       <!-- FiloKid Section -->
+    <section id="filokid" class="alt-services section">
 
-      </div><!-- End Section Title -->
+      <div class="container">
 
+        <div class="row justify-content-around gy-4">
+          <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <img src="{% static 'assets/img/FiloKid.jpg' %}" alt=""></div>
 
-            </div>
-            <div class="col-lg-13 text-center ">
+          <div class="col-lg-5 d-flex flex-column justify-content-center " data-aos="fade-up" data-aos-delay="200">
+
+                  <h3>FiloKid</h3>
+              <h4><i>Inspiring the next generation of innovators.</i></h4>
+              <div>
               <div class="container">
-              <p><h4>Inspiring the next generation of innovators. <br> FiloKid complements the school system by turning theory into practice.
+              <p><h4> <br> FiloKid complements the school system by turning theory into practice.
                   Through creative and innovation programs, we empower children to think critically, act creatively and make a difference.</h4></p>
 
                   </div>
                 <br>
               <div class="col-lg-13 text-center">
-              <a href="/filokid" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
+              <a href="#filokid" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
+            </div><!-- End Icon Box -->
+
+
+          </div>
         </div>
-      </div>
-      <br> <br>
-    </section>
-
-
-{#      call to action#}
 
 
 
+    </section><!-- FiloKid Section -->
 
-{#      FiloCraft Section#}
-      <hr>
-
-    <section id="filocraft"  class=" light-background" >
+      <br><br>
 
 
-       <div  class="info d-flex align-items-center">
-        <div class="container">
-          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-<div class="container section-title" data-aos="fade-up">
+       <!-- Features Section -->
+    <section id="filocraft" class="features section">
 
-        <h2>FiloCraft</h2>
-    <h4>Crafting Art that lasts a lifetime.</h4>
-
-      </div><!-- End Section Title -->
-            </div>
+      <div class="container">
 
 
-                   <p> <h4>In FiloCraft, we produce high-quality, diverse and sustainable art. Our creations span drawings and Paintings,
-                  scriptures and crafts showcasing excellence and creativity. <br>
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="tab-pane fade active show" id="features-tab-1" role="tabpanel">
+            <div class="row">
+              <div class="col-lg-5 d-flex flex-column justify-content-center justify-content-center">
+                     <h3>FiloCraft</h3>
+                  <h4><i>Crafting Art that lasts a lifetime.</i></h4>
+                 <p> <h4>In FiloCraft, we produce high-quality, diverse and sustainable art. Our creations span drawings and Paintings,
+                  scriptures and crafts showcasing excellence and creativity.
                   Explore our art:
 
-
-                  <ul>
-                     <li>Paintings</li>
-                      <li>Scriptures</li>
-                      <li>Custom Crafts</li>
-                  </ul>
+                   <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Paintings.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Scriptures.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Custom Craft.</span></li>
+                </ul>
 
                   </h4>
 
-                  </div>
-                <br>
-              <div class="col-lg-13 text-center">
-              <a href="/filocraft" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
+                     <div class="col-lg-13 text-center">
+              <a href="#filocraft" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
             </div>
-          </div>
+              </div>
+              <div class="col-lg-6 order-1 order-lg-2 text-center">
+                <img src="{% static 'assets/img/filocraft.jpg' %}" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div><!-- End FiloCraft -->
 
-        </section>
-            <hr>
-      <br>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Features Section -->
+
+
+      <br><br><br>
+
+
+{#      FiloCraft Section#}
+{#      <hr>#}
+{##}
+{#    <section id="filocraft"  class=" light-background" >#}
+{##}
+{#       <div  class="info d-flex align-items-center">#}
+{#        <div class="container">#}
+{#          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">#}
+{#<div class="container section-title" data-aos="fade-up">#}
+{#<h2>FiloCraft</h2>#}
+{#        Crafting Art that lasts a lifetime.#}
+{##}
+{##}
+{##}
+{#      </div><!-- End Section Title -->#}
+{#            </div>#}
+{##}
+{##}
+{#                   <p> <h4>In FiloCraft, we produce high-quality, diverse and sustainable art. Our creations span drawings and Paintings,#}
+{#                  scriptures and crafts showcasing excellence and creativity. <br>#}
+{#                  Explore our art:#}
+{##}
+{##}
+{#                  <ul>#}
+{#                     <li>Paintings</li>#}
+{#                      <li>Scriptures</li>#}
+{#                      <li>Custom Crafts</li>#}
+{#                  </ul>#}
+{##}
+{#                  </h4>#}
+{##}
+{#                  </div>#}
+{#                <br>#}
+{#              <div class="col-lg-13 text-center">#}
+{#              <a href="/filocraft" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>#}
+{#            </div>#}
+{#          </div>#}
+{##}
+{#        </section>#}
+{#            <hr>#}
+{#      <br>#}
 
 
 
@@ -256,35 +306,68 @@
 
 
 
-    <section id="filosolve" >
+      <!-- Page Title -->
+      <section id="filosolve">
 
-       <div  class="info d-flex align-items-center">
-        <div class="container">
-          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-<div class="container section-title" data-aos="fade-up">
 
-        <h2>FiloSolve</h2>
-    <h4>Where ideas solve real world challenges.</h4>
+    <div class="page-title dark-background" style="background-image: url({% static 'assets/img/FiloSolve.jpg' %});">
+      <div class="container position-relative">
 
-      </div><!-- End Section Title -->
-            </div>
-
-              <div class="container">
+              <h3>FiloSolve</h3>
+        <nav class="breadcrumbs">
+    <h4><i>Where ideas solve real world challenges.</i></h4> <br>
+            <div class="container">
                    <p> <h4>FiloSolve is our project execution hub. We tackle social, physical and emotional challenges through innovative solutions.
                   Kids from FiloKid and our wider network of creatives join forces to make an impact.<br>
 
                   </h4>
-
-                  </div>
-                <br>
-              <div class="col-lg-13 text-center">
-              <a href="/filosolve" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
             </div>
-          </div>
-        </div>
 
-        </section>
-            <hr>
+
+           <div class="col-lg-13 text-center">
+              <a href="#filosolve" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>
+            </div>
+
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+                </section>
+
+
+    <!-- Services Section -->
+
+
+
+
+{#    <section id="filosolve" >#}
+{##}
+{#       <div  class="info d-flex align-items-center">#}
+{#        <div class="container">#}
+{#          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">#}
+{#<div class="container section-title" data-aos="fade-up">#}
+{##}
+{#        <h2>FiloSolve</h2>#}
+{#    <h4>Where ideas solve real world challenges.</h4>#}
+{##}
+{#      </div><!-- End Section Title -->#}
+{#            </div>#}
+{##}
+{#              <div class="container">#}
+{#                   <p> <h4>FiloSolve is our project execution hub. We tackle social, physical and emotional challenges through innovative solutions.#}
+{#                  Kids from FiloKid and our wider network of creatives join forces to make an impact.<br>#}
+{##}
+{#                  </h4>#}
+{##}
+{#                  </div>#}
+{#                <br>#}
+{#              <div class="col-lg-13 text-center">#}
+{#              <a href="/filosolve" class="btn-get-started align-items-center">Learn more <i class="bi bi-arrow-right"></i></a>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{#        </section>#}
+{#            <hr>#}
 
       <br>
 
@@ -438,10 +521,11 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-{#      <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span></p>#}
+      <p>© <span href="{% url 'clients' %}">Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span>
+          <a href="{% url 'clients' %}">.</a>.</p>
       <div class="credits">
 
-        Designed by <a href="https://stemiotsoftwares.onrender.com/" style="color: black" class="credits1"><b>StemiotInnovations</b></a>
+        Designed by <a href="https://stemiotsoftwares.onrender.com/" style="color: black" class="credits1"><b><u>StemiotInnovations</u></b></a>
       </div>
     </div>
 
@@ -466,4 +550,5 @@
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
 
-</
+</body>
+</html>
