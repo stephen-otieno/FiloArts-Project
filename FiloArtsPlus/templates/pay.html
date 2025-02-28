@@ -1,9 +1,10 @@
+
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+       <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>FiloArts+</title>
   <meta name="description" content="">
@@ -27,13 +28,19 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'assets/css/gallery.css' %}">
+
+{#    <style>#}
+{#        .payment_form {#}
+{#            background-color: #FFC720FF;#}
+{#            height: 10cm;#}
+{#            width: 7cm;#}
+{#            border#}
+{#        }#}
+{#    </style>#}
 </head>
 
-
 <body class="index-page">
-
-  <header id="header" class="header d-flex align-items-center fixed-top">
+ <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
@@ -56,131 +63,35 @@
       </nav>
 
     </div>
-  </header>
 
-{#  Start of Gallery page#}
+ </header>
 
-   <main class="main">
+ <main class="container"><br><br><br>
 
+     <br><br><br>
+     <h1>Pay Now</h1>
+     <div class="container payment_form">
 
+ <form action="/stk_push/" method="POST" >
+    {% csrf_token %}
 
+    <input class="form-control w-25" name="phone" type="number" placeholder="Phone Number" required value="+254"><br><br>
 
-       <!-- Gallery Section -->
-    <section id="recent-blog-posts" class="recent-blog-posts section">
+    <input class="form-control w-25" name="amount" type="number" required placeholder="Amount"><br><br>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up"><br>
-          <br><br>
-        <h2>Gallery</h2>
-        <p>Crafting Art that lasts a lifetime</p>
-      </div><!-- End Section Title -->
+    <input class="button-form" type="submit" value="Pay Now">
 
+    </form>
 
-        <div class="container m-3 d-flex justify-content-center align-items-center" style="min-height: 100vh;" >
+     </div>
 
-            <div class="row justify-content-center g-1">
-
-                {% for drawing in drawings %}
-
-                <div class="col-md-3 card m-5">
-
-                    <img src="/media/{{ drawing.drawing_img }} " class="card-img-top  img-fluid card-img-top p-0 m-0 rounded" style="cursor: pointer;" width="300"  alt="">  <br><br>
-
-                     <div class="card-body">
-                <p><b>Name:</b> {{ drawing.drawing_name }}</p>
-                <p><b>Artist:</b> {{ drawing.drawing_artist }}</p>
-                <p><b>Price:</b> Ksh.{{ drawing.drawing_price }}</p>
+ </main>
 
 
+ <br> <br> <br> <br> <br> <br>
+ <footer>
 
-
-                     </div>
-
-{#                    <form action="{% url 'stk_push' %}" method="POST">#}
-{#    {% csrf_token %}#}
-{#    <input type="hidden" name="phone" value="2547XXXXXXXX">#}
-{#    <input type="hidden" name="amount" value="100">#}
-{#    <input type="hidden" name="name" value="John Doe">#}
-{#    <input type="hidden" name="email" value="john@example.com">#}
-{#    <button type="submit" class="btn btn-success">Buy Now</button>#}
-{#</form>#}
-
-
-
-           <div class="d-flex justify-content-center gap-2 mb-4">
-               <a href="{% url 'pay' %}"> <button class="btn btn-success">Buy Now</button> </a>
-    <button class="btn btn-success">Add to cart</button>
-</div>
-        </div>
-
-
-                      {% if forloop.counter|divisibleby:3 %}
-                <div class="w-100"></div>
-            {% endif %}
-
-                {% endfor %}
-
-
-            </div>
-
-</div>
-
-
-
-    </section><!-- /Projects Section -->
-
-  </main>
-
-  <footer id="footer" class="footer dark-background">
-
-
-
-     <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-6 footer-about">
-          <a href="/" class="logo d-flex align-items-center">
-            <span class="sitename">FiloArts+</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>Nairobi, Kenya</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+254 741 232 719</span></p>
-            <p><strong>Email:</strong> <span>contact@filoartsplus.com</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="#about">About us</a></li>
-            <li><a href={% url 'gallery' %}>Gallery</a></li>
-            <li><a href="{% url 'blogs' %}">Blogs</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4> Key components </h4>
-          <ul>
-            <li><a href="{% url 'homepage' %}#filokid">FiloKid</a></li>
-            <li><a href="{% url 'homepage' %}#filocraft">FiloCraft</a></li>
-            <li><a href="{% url 'homepage' %}#filosolve">FiloSolve</a></li>
-
-          </ul>
-        </div>
-
-
-
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
+ <div class="container copyright text-center mt-4">
 {#      <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span></p>#}
       <div class="credits">
 
@@ -188,9 +99,7 @@
       </div>
     </div>
 
-
-</footer>
-
+  </footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -210,5 +119,7 @@
 
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+
 </body>
+
 </html>

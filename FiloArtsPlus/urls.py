@@ -12,6 +12,17 @@ urlpatterns = [
     # path('signup/',views.signup_page, name='signup'),
     path('login/', views.login_page, name='login'),
     path('drawing_upload/', views.drawing_upload, name='uploads'),
+
+    path('stk_push/', views.stk_push, name='stk_push'),
+    path('callback', views.callback, name='callback'),
+    path('waiting/<int:transaction_id>/', views.waiting_page, name='waiting_page'),
+    path('check_status/<int:transaction_id>/', views.check_status, name='check_status'),
+
+    path('payment-success/', views.payment_success, name='payment_success'),
+    path('payment-failed/', views.payment_failed, name='payment_failed'),
+    path('payment-cancelled/', views.payment_failed, name='payment_cancelled'),
+    path('pay/', views.pay, name='pay'),
+
 ]
 
 if settings.DEBUG:
