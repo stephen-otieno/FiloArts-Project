@@ -82,7 +82,8 @@
 
                 {% for drawing in drawings %}
 
-                <div class="col-md-3 card m-5">
+                <div class="row row-cols-1 col-md-3 card m-5" >
+
 
                     <img src="/media/{{ drawing.drawing_img }} " class="card-img-top  img-fluid card-img-top p-0 m-0 rounded" style="cursor: pointer;" width="300"  alt="">  <br><br>
 
@@ -96,27 +97,18 @@
 
                      </div>
 
-{#                    <form action="{% url 'stk_push' %}" method="POST">#}
-{#    {% csrf_token %}#}
-{#    <input type="hidden" name="phone" value="2547XXXXXXXX">#}
-{#    <input type="hidden" name="amount" value="100">#}
-{#    <input type="hidden" name="name" value="John Doe">#}
-{#    <input type="hidden" name="email" value="john@example.com">#}
-{#    <button type="submit" class="btn btn-success">Buy Now</button>#}
-{#</form>#}
-
-
 
            <div class="d-flex justify-content-center gap-2 mb-4">
                <a href="{% url 'pay' %}"> <button class="btn btn-success">Buy Now</button> </a>
-    <button class="btn btn-success">Add to cart</button>
 </div>
         </div>
 
 
-                      {% if forloop.counter|divisibleby:3 %}
-                <div class="w-100"></div>
-            {% endif %}
+
+
+{#                      {% if forloop.counter|divisibleby:3 %}#}
+{#                <div class="w-100"></div>#}
+{#            {% endif %}#}
 
                 {% endfor %}
 

@@ -29,14 +29,7 @@
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
 
-{#    <style>#}
-{#        .payment_form {#}
-{#            background-color: #FFC720FF;#}
-{#            height: 10cm;#}
-{#            width: 7cm;#}
-{#            border#}
-{#        }#}
-{#    </style>#}
+
 </head>
 
 <body class="index-page">
@@ -75,7 +68,7 @@
  <form action="/stk_push/" method="POST" >
     {% csrf_token %}
 
-    <input class="form-control w-25" name="phone" type="number" placeholder="Phone Number" required value="+254"><br><br>
+    <input class="form-control w-25" name="phone" type="number" placeholder="Phone Number"  value="+254" required><br><br>
 
     <input class="form-control w-25" name="amount" type="number" required placeholder="Amount"><br><br>
 
