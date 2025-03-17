@@ -188,7 +188,7 @@ h6 {
 @media (min-width: 1200px) {
   .navmenu {
     padding: 0;
-
+    text-transform: none !important;
 
   }
 
@@ -229,7 +229,6 @@ h6 {
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
-    text-transform: uppercase;
   }
 
   .navmenu a i,
@@ -997,7 +996,7 @@ section,
 .get-started .php-email-form h3 {
   font-size: 14px;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 1px;
 }
 
@@ -1590,7 +1589,7 @@ section,
   bottom: 0;
   background-color: var(--accent-color);
   color: var(--contrast-color);
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 13px;
   padding: 6px 12px;
   font-weight: 500;
@@ -1675,7 +1674,7 @@ section,
 }
 
 .about .our-story h4 {
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 1.1rem;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
@@ -2095,7 +2094,7 @@ section,
 }
 
 .project-details .portfolio-info ul strong {
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 400;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 14px;
@@ -2197,7 +2196,7 @@ section,
   position: absolute;
   right: 0;
   bottom: 0;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 13px;
   padding: 6px 12px;
   font-weight: 500;
