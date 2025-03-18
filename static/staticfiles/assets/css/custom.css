@@ -1,0 +1,18 @@
+/* static/css/custom.css */
+.login-logo {
+    display: none !important;
+}
+
+/* Change the sidebar background color */
+.main-sidebar {
+    background-color: #FEB900FF !important;
+}
+
+/* Change text color if needed for contrast */
+.nav-sidebar .nav-link {
+    color: #000000 !important;  /* Black text for readability */
+}
+
+.nav-sidebar .nav-link:hover {
+    background-color: #e0a800 !important; /* Slightly darker yellow on hover */
+}

@@ -31,14 +31,14 @@ class Drawing(models.Model):
 
 # register db
 
-class User1(models.Model):
-    user_name=models.CharField(max_length=50)
-    user_email=models.CharField(max_length=100)
-    user_password1=models.CharField(max_length=100)
-    user_password2=models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.user_name
+# class User1(models.Model):
+#     user_name=models.CharField(max_length=50)
+#     user_email=models.CharField(max_length=100)
+#     user_password1=models.CharField(max_length=100)
+#     user_password2=models.CharField(max_length=100)
+#
+#     def __str__(self):
+#         return self.user_name
 
 
 class Transaction(models.Model):
