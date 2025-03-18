@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
-from django.views import static
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -175,20 +174,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# Static files (CSS, JavaScript, Images)
+import os
+
+# URL for serving static files
 STATIC_URL = "/static/"
 
-# Add this line:
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# The directory where `collectstatic` will collect static files for deployment
+STATIC_ROOT = os.path.join(BASE_DIR, "static/staticfiles")  # Ensure this is a valid path
 
-# Ensure STATICFILES_DIRS is properly set
+# Additional static files directories (for development)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),  # Ensure this points to your actual static folder
+    os.path.join(BASE_DIR, "static"),  # Ensure this folder exists
 ]
 
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/clients/'
+SIGN_UP_URL = '/signup/'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
