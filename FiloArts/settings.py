@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 JAZZMIN_SETTINGS = {
-    "site_logo": "assets/img/logo.png",
+    # "site_logo": "assets/img/logo.png",
     "login-logo": None,
     "custom_css": "admin/css/custom_admin.css",  # Load custom styles
     "site_icon": "assets/img/logo.png",
