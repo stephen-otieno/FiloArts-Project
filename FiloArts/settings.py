@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 
+from django.views import static
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,14 +35,56 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'FiloArtsPlus',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'FiloArtsPlus'
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_logo": "assets/img/logo.png",
+    "login-logo": None,
+    "custom_css": "admin/css/custom_admin.css",  # Load custom styles
+    "site_icon": "assets/img/logo.png",
+    "site_title": "FiloArts+ Admin",
+    "site_header": "FiloArts+ Management",
+    "site_brand": "FiloArts+",
+    "site_brand_link": "/",  # Clickable Logo to Homepage
+    "welcome_sign": "Welcome to FiloArts+ Admin Panel",
+    "copyright": "FiloArts+ © 2025",
+
+    "search_model": ["FiloArtsPlus.Drawing", "FiloArtsPlus.Client"],
+
+    # ✅ Adding Home Button in Sidebar
+    "topmenu_links": [
+        {"name": "Home", "url": "/", "icon": "fas fa-home", "show_sidebar": True},
+        {"model": "FiloArtsPlus.Drawing"},
+        {"model": "FiloArtsPlus.Client"},
+    ],
+
+    "usermenu_links": [
+        {"name": "Homepage", "url": "/", "new_window": False},  # Homepage Link in User Menu
+    ],
+
+    "icons": {
+        "FiloArtsPlus.Drawing": "fas fa-paint-brush",
+        "FiloArtsPlus.Client": "fas fa-users",
+        "auth.User": "fas fa-user",
+        "FiloArtsPlus.Transaction": "fas fa-credit-card",
+    },
+
+    # ✅ Controlling Sidebar Order
+    "order_with_respect_to": [
+        "Home",
+        "FiloArtsPlus.Drawing",
+        "FiloArtsPlus.Client",
+        "FiloArtsPlus.Transaction",
+    ],
+}
 
 MIDDLEWARE =  [
     'django.middleware.security.SecurityMiddleware',
@@ -132,24 +175,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-if DEBUG:
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = "/static/"
 
-    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
+# Add this line:
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-else:
-
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Where static files will be collected
-
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/clients/'
-SIGN_UP_URL = '/signup/'
+# Ensure STATICFILES_DIRS is properly set
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),  # Ensure this points to your actual static folder
+]
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

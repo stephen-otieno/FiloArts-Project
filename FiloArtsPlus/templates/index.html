@@ -28,6 +28,37 @@
 
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+    <style>
+        .alert-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+    </style>
 
 
 </head>
@@ -61,6 +92,18 @@
   </header>
 
   <main class="main">
+
+        {% if messages %}
+    <div class="alert-container">
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
@@ -374,6 +417,8 @@
           </div>
 
           <div class="col-lg-8">
+
+
             <form action="/client_data/" method="post" class="client-form"  data-aos="fade-up" data-aos-delay="200">
 
 
@@ -399,9 +444,7 @@
                 <br>
 
                 <div class="col-md-12 text-center">
-{#                  <div class="loading">Loading</div>#}
-{#                  <div class="error-message"></div>#}
-{#                  <div class="sent-message">Your message has been sent. Thank you!</div>#}
+
 
                   <button type="submit" class="submit_btn">Send Message</button>
                 </div>
@@ -472,8 +515,8 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span href="{% url 'clients' %}">Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span>
-          <a href="{% url 'clients' %}">.</a>.</p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">FiloArts+</strong> <span>All Rights Reserved</span>
+          <a href="{% url 'admin:index' %}">.</a>.</p>
       <div class="credits">
 
         Designed by <a href="https://stemiotsoftwares.onrender.com/" style="color: black" class="credits1"><b><u>StemiotInnovations</u></b></a>
@@ -499,7 +542,17 @@
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
 
   <!-- Main JS File -->
+
   <script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    setTimeout(function () {
+        var alerts = document.querySelectorAll('.alert');
+        alerts.forEach(function (alert) {
+            alert.style.display = 'none';
+        });
+    }, 5000); // Hides the message after 5 seconds
+    </script>
+
 
 </body>
 </html>

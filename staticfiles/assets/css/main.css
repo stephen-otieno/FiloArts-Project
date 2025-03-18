@@ -157,7 +157,7 @@ h6 {
   color: var(--heading-color);
 }
 .header .logo .sitename {
-  color: #FFC720FF;
+  color: #3d0224;
 }
 
 
@@ -188,7 +188,7 @@ h6 {
 @media (min-width: 1200px) {
   .navmenu {
     padding: 0;
-
+    text-transform: none !important;
 
   }
 
@@ -229,7 +229,6 @@ h6 {
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
-    text-transform: uppercase;
   }
 
   .navmenu a i,
@@ -455,8 +454,7 @@ h6 {
 .footer {
   /*color: var(--default-color);*/
     color: black;
-  /* background-color: var(--accent-color);*/
-  /*background: url("../img/footer-bg.jpg") top center no-repeat;*/
+
   background-size: cover;
   font-size: 14px;
   background-color: #ffc720;
@@ -588,6 +586,8 @@ h6 {
   font-size: 13px;
     
 }
+
+
 
 
 /*--------------------------------------------------------------
@@ -959,10 +959,11 @@ section,
 
 .get-started .content h3 {
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 25px;
   padding-bottom: 25px;
   position: relative;
+  word-spacing: 25px;
 }
 
 .get-started .content h3:after {
@@ -995,7 +996,7 @@ section,
 .get-started .php-email-form h3 {
   font-size: 14px;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 1px;
 }
 
@@ -1087,7 +1088,7 @@ section,
 --------------------------------------------------------------*/
 .services .service-item {
   background-color: var(--surface-color);
-  padding: 40px;
+  padding: 50px;
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
   height: 100%;
 }
@@ -1133,9 +1134,10 @@ section,
 }
 
 .services .service-item p {
-  line-height: 24px;
-  font-size: 14px;
+  line-height: 30px;
+  font-size:30px;
   margin-bottom: 0;
+
 }
 
 .services .service-item .readmore {
@@ -1587,7 +1589,7 @@ section,
   bottom: 0;
   background-color: var(--accent-color);
   color: var(--contrast-color);
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 13px;
   padding: 6px 12px;
   font-weight: 500;
@@ -1649,7 +1651,7 @@ section,
 --------------------------------------------------------------*/
 .about .inner-title {
   font-size: 2.75rem;
-  font-weight: 700;
+  font-weight: 500;
   margin: 30px 0;
 }
 
@@ -1672,7 +1674,7 @@ section,
 }
 
 .about .our-story h4 {
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 1.1rem;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
@@ -1747,6 +1749,10 @@ section,
   object-position: center;
   z-index: 1;
 }
+
+
+
+
 
 /*--------------------------------------------------------------
 # Stats Counter Section
@@ -2088,7 +2094,7 @@ section,
 }
 
 .project-details .portfolio-info ul strong {
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-weight: 400;
   color: color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 14px;
@@ -2190,7 +2196,7 @@ section,
   position: absolute;
   right: 0;
   bottom: 0;
-  text-transform: uppercase;
+  text-transform: lowercase;
   font-size: 13px;
   padding: 6px 12px;
   font-weight: 500;
@@ -2729,6 +2735,9 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+
+}
+.qualicent {
 }
 
 /*--------------------------------------------------------------

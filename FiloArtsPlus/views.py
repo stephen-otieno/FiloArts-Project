@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from FiloArtsPlus.models import Client, Drawing, User1, Transaction
+from FiloArtsPlus.models import Client, Drawing,Transaction
 from .forms import CustomLoginForm
 from .forms import RegisterForm,CustomLoginForm
 from django.http import JsonResponse
@@ -31,22 +31,29 @@ def blogs(request):
 
 
 # Function for fetching and plotting the clients details on the database
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import Client  # Ensure Client model exists
+
 def client_data(request):
     if request.method == 'POST':
-        client_name = request.POST['client_name']
-        client_email = request.POST['client_email']
-        client_message = request.POST['client_message']
+        client_name = request.POST.get('client_name', '').strip()
+        client_email = request.POST.get('client_email', '').strip()
+        client_message = request.POST.get('client_message', '').strip()
 
-        client = Client(
-            client_name= client_name,
-            client_email= client_email,
-            client_message= client_message
+        if not client_name or not client_email or not client_message:
+            messages.error(request, "All fields are required!")
+        else:
+            Client.objects.create(
+                client_name=client_name,
+                client_email=client_email,
+                client_message=client_message
+            )
+            messages.success(request, "Your message has been sent successfully!")
 
-        )
+        return redirect('/')  # Redirects back to the homepage
 
-        client.save()
-        return redirect('/')
-
+    return render(request, 'index.html')
 
 # Function for the clients table
 
