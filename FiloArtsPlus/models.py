@@ -1,6 +1,9 @@
 from django.db import models
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django.utils.timezone import now
+
+
 # Create your models here.
 
 # messages db
@@ -59,4 +62,14 @@ class Transaction(models.Model):
 
 
 
+class Blog(models.Model):
+    image = models.ImageField(upload_to='blog_images/')
+    description = models.TextField()
+    # author = models.CharField(max_length=100)
+    filled_at = models.DateField(auto_now_add=True)
 
+
+class Comment(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=100)
+    text = models.TextField()

@@ -2,6 +2,8 @@ import password
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import get_user_model, authenticate
+from .models import Blog, Comment
+
 
 User = get_user_model()
 
@@ -45,6 +47,20 @@ class RegisterForm(forms.ModelForm):
       if commit:
             user.save()
             return user
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['image', 'description']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['name', 'text']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control col-md-4', 'placeholder': 'Enter your name'}),
+            'text': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your comment...', 'rows': 4}),
+        }
 
 
 

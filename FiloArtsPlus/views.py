@@ -2,11 +2,12 @@ import json
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
-from FiloArtsPlus.models import Client, Drawing,Transaction
+from FiloArtsPlus.models import Client, Drawing,Transaction, Blog, Comment
+
 from .forms import CustomLoginForm
-from .forms import RegisterForm,CustomLoginForm
+from .forms import RegisterForm,CustomLoginForm,BlogForm, CommentForm
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
@@ -26,8 +27,8 @@ def gallery(request):
     drawings = Drawing.objects.all()
     return render(request, 'gallery.html', {'drawings':drawings})
 
-def blogs(request):
-    return render(request, 'blogs.html')
+# def blogs(request):
+#     return render(request, 'blogs.html')
 
 
 # Function for fetching and plotting the clients details on the database
@@ -460,7 +461,32 @@ def view_payments(request):
 
 
 
+def blog_list(request):
+    blogs = Blog.objects.all().order_by('-filled_at')
+    if request.method == "POST":
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('blog_list')
+    else:
+        form = BlogForm()
+    return render(request, 'blogs.html', {'blogs': blogs, 'form': form})
 
+
+
+def blog_detail(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    comments = blog.comments.all()
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.blog = blog
+            comment.save()
+            return redirect('blog_detail', blog_id=blog.id)
+    else:
+        form = CommentForm()
+    return render(request, 'blog_detail.html', {'blog': blog, 'comments': comments, 'form': form})
 
 
 
@@ -495,3 +521,4 @@ def view_payments(request):
 #
 # login function
 # Create your views here.
+

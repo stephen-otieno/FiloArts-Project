@@ -28,44 +28,34 @@
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
     <style>
-.card {
-    width: 100%;
+.blog-card {
+    width: fit-content; /* Adjusts width to match content (image & text) */
+    max-width: 600px; /* Prevents the card from being too wide */
+    margin: auto;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    height: 100%; /* Ensures uniform card height */
-    display: flex;
-    flex-direction: column;
+    background: #fff;
 }
 
-.card-img-container {
-    width: 100%;
-    height: 250px; /* Set a fixed height for uniform images */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.card-img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures images fill the space without distortion */
+.blog-image {
+    width: 100%; /* Ensures image fills card width */
+    max-height: 400px; /* Limits height to prevent overly large images */
+    object-fit: contain; /* Keeps full image visible without cropping */
+    display: block;
 }
 
 .card-body {
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    text-align: left;
+    width: 100%; /* Ensures text area adjusts to image width */
 }
 
 
     </style>
-
-
 </head>
-
-<body class="index-page">
- <header id="header" class="header d-flex align-items-center fixed-top">
+<body>
+<header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="/" class="logo d-flex align-items-center">
@@ -90,48 +80,63 @@
     </div>
 
  </header>
+<br><br>
 
-  <main class="main">
 
-       <!-- Recent Blog Posts Section -->
-    <section id="recent-blog-posts" class="recent-blog-posts section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up"><br><br>
-          <br>
-        <h2>Recent Blog Posts</h2>
-        <p>FiloArts+ Recent blogs</p>
-      </div><!-- End Section Title -->
+    <div class="container mt-5">
+      <div class="card blog-card">
+    <img src="{{ blog.image.url }}" alt="Blog Image" class="blog-image">
+    <div class="card-body">
+        <p class="text-muted">Posted on {{ blog.filled_at|date:"Y-m-d " }}</p>
+        <p class="card-text">{{ blog.description }}</p>
+    </div>
+</div>
+</div>
+    <br><br>
+    <div class="container">
+       <h3 class="mt-4">
+    <button id="toggle-comments" class="btn btn-sm btn-primary">
+        Comments ({{ comments|length }})
+    </button>
+</h3>
 
-<div class="container mt-5">
-
-    <div class="row">
-        {% for blog in blogs %}
-            <div class="col-md-4 mb-4 d-flex">
-                <div class="card shadow-lg">
-                    <!-- Image Container -->
-                    <div class="card-img-container">
-                        <img src="{{ blog.image.url }}" class="card-img-top" alt="Blog Image">
-                    </div>
-
-                    <!-- Card Body -->
-                    <div class="card-body d-flex flex-column">
-                        <p class="text-muted"> Published on {{ blog.filled_at|date:"Y-m-d " }}</p>
-                        <p>{{ blog.description|truncatewords:20 }}</p>
-                        <a href="{% url 'blog_detail' blog.id %}" class="btn btn-secondary mt-auto">View Blog</a>
-                    </div>
+<div id="comments-section" style="display: none;">
+    {% for comment in comments %}
+        <div class="border p-2 mb-2">
+            <p><strong>{{ comment.name }}</strong> - {{ comment.created_at|date:"Y-m-d H:i" }}</p>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet. Be the first to comment!</p>
+    {% endfor %}
+</div>
+<h3 class="mt-4">Leave a Comment</h3>
+<div class="container d-flex justify-content-start">
+    <div class="p-4 bg-light rounded shadow-sm" style="width: fit-content;">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">{{ form.name.label }}</label>
+                    {{ form.name }}
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label class="form-label">{{ form.text.label }}</label>
+                    {{ form.text }}
                 </div>
             </div>
-        {% endfor %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 </div>
 
-    </section><!-- /Recent Blog Posts Section -->
+</div>
+<br><br><br>
 
 
 
-  </main>
- <br> <br> <br> <br> <br> <br>
+
  <footer>
 
  <div class="container copyright text-center mt-4">
@@ -162,6 +167,18 @@
 
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+<script>
+    document.getElementById("toggle-comments").addEventListener("click", function() {
+        var commentsSection = document.getElementById("comments-section");
+        if (commentsSection.style.display === "none") {
+            commentsSection.style.display = "block";
+            this.textContent = "Hide Comments ({{ comments|length }})";
+        } else {
+            commentsSection.style.display = "none";
+            this.textContent = "Comments ({{ comments|length }})";
+        }
+    });
+</script>
 
 </body>
 
