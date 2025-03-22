@@ -28,6 +28,65 @@
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'assets/css/gallery.css' %}">
+
+   <style>
+       .isotope-filters {
+           color:black;
+       }
+
+    .isotope-item {
+        width: 300px; /* Fixed width */
+        height: 460px; /* Fixed height */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .isotope-item img {
+        width: 100%;
+        height: 200px; /* Set a fixed height for images */
+        object-fit: cover; /* Ensures images scale properly */
+        margin-bottom: 5px; /* Reduce space between image and details */
+    }
+
+    .card-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* Align content at the top */
+        text-align: center;
+        padding-top: 8px; /* Reduce padding to minimize spacing */
+    }
+
+    .card-body p {
+        margin: 2px 0; /* Minimize spacing between text elements */
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .buy-btn {
+        margin-top: auto; /* Push button to the bottom */
+        padding: 8px 12px;
+        background-color: #198754;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: inline-block; /* Ensure "Buy Now" stays on one line */
+        width: auto; /* Adjust width dynamically */
+        white-space: nowrap; /* Prevent text from wrapping */
+        text-align: center;
+    }
+
+    .buy-btn:hover {
+        background-color: #145c39;
+    }
+</style>
+
+
 </head>
 
 
@@ -60,66 +119,105 @@
 
 {#  Start of Gallery page#}
 
-   <main class="main">
+   <main class="main"><br><br><br><br> <br><br>
 
+   <!-- Filters -->
+<div class="container text-center">
+    <ul class="portfolio-filters isotope-filters list-unstyled d-flex justify-content-center gap-3">
+        <li data-filter="*" class="filter-active btn btn-outline-warning">All</li>
+        <li data-filter=".pencil" class="btn btn-outline-warning">Pencil Drawings</li>
+        <li data-filter=".painting" class="btn btn-outline-warning">Paintings</li>
+        <li data-filter=".penart" class="btn btn-outline-warning">Pen Art</li>
+    </ul>
+</div>
 
+<!-- Gallery Container -->
+<div class="container">
+    <div class="row justify-content-center g-1 isotope-container">
+        {% for drawing in drawings %}
+        <!-- Add dynamic class for filtering -->
+        <div class="col-md-3 card m-5 isotope-item {{ drawing.drawing_category|lower }}">
+            <!-- Image Clickable for Modal -->
+            <img src="/media/{{ drawing.drawing_img }}"
+                 class="card-img-top img-fluid p-0 m-0 rounded open-modal"
+                 style="cursor: pointer; width: 100%; height: 250px; object-fit: cover;"
+                 alt="{{ drawing.drawing_name }}"
+                 data-bs-toggle="modal" data-bs-target="#imageModal"
+                 data-img="/media/{{ drawing.drawing_img }}">
 
+            <br><br>
 
-       <!-- Gallery Section -->
-    <section id="recent-blog-posts" class="recent-blog-posts section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up"><br>
-          <br><br>
-        <h2>Gallery</h2>
-        <p>Crafting Art that lasts a lifetime</p>
-      </div><!-- End Section Title -->
-
-
-        <div class="container m-3 d-flex justify-content-center align-items-center" style="min-height: 100vh;" >
-
-            <div class="row justify-content-center g-1">
-
-                {% for drawing in drawings %}
-
-                <div class="row row-cols-1 col-md-3 card m-5" >
-
-
-                    <img src="/media/{{ drawing.drawing_img }} " class="card-img-top  img-fluid card-img-top p-0 m-0 rounded" style="cursor: pointer;" width="300"  alt="">  <br><br>
-
-                     <div class="card-body">
+            <div class="card-body">
                 <p><b>Name:</b> {{ drawing.drawing_name }}</p>
                 <p><b>Artist:</b> {{ drawing.drawing_artist }}</p>
                 <p><b>Price:</b> Ksh.{{ drawing.drawing_price }}</p>
-
-
-
-
-                     </div>
-
-
-           <div class="d-flex justify-content-center gap-2 mb-4">
-               <a href="{% url 'pay' %}"> <button class="btn btn-success">Buy Now</button> </a>
-</div>
-        </div>
-
-
-
-
-
-
-                {% endfor %}
-
-
             </div>
 
+            <div class="d-flex justify-content-center gap-2 mb-2">
+                <a href="{% url 'pay' %}">
+                    <button class="btn buy-btn btn-success">Buy Now</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
+<!-- Bootstrap Modal for Enlarged Image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid rounded" alt="Enlarged Image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Isotope.js -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Isotope Filtering
+        var iso = new Isotope('.isotope-container', {
+            itemSelector: '.isotope-item',
+            layoutMode: 'fitRows'
+        });
+
+        document.querySelectorAll('.portfolio-filters li').forEach(function (filterBtn) {
+            filterBtn.addEventListener("click", function () {
+                var filterValue = this.getAttribute("data-filter");
+                iso.arrange({ filter: filterValue });
+
+                document.querySelector('.portfolio-filters .filter-active').classList.remove('filter-active');
+                this.classList.add('filter-active');
+            });
+        });
 
 
-    </section><!-- /Projects Section -->
+        // Image Modal Functionality
+        document.querySelectorAll(".open-modal").forEach((img) => {
+    img.addEventListener("click", function () {
+        document.getElementById("modalImage").src = this.getAttribute("data-img");
+    });
+});
 
-  </main>
+
+        var modalImage = document.getElementById("modalImage");
+        document.querySelectorAll(".open-modal").forEach(function (img) {
+            img.addEventListener("click", function () {
+                var imgSrc = this.getAttribute("data-img");
+                modalImage.src = "";  // Clear previous image to fix cache issue
+                setTimeout(() => { modalImage.src = imgSrc; }, 100);
+            });
+        });
+    });
+</script>
+
+   </main>
 
   <footer id="footer" class="footer dark-background">
 
@@ -200,5 +298,8 @@
 
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+
 </body>
 </html>

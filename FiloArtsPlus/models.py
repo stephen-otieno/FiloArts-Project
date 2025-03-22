@@ -19,18 +19,21 @@ class Client(models.Model):
         return self.client_name
 
 
-# drawings db
-
 class Drawing(models.Model):
-    drawing_name=models.CharField(max_length=100)
-    drawing_artist=models.CharField(max_length=50)
-    drawing_price=models.IntegerField()
-    drawing_img=models.ImageField(upload_to = "drawings/")
+    CATEGORY_CHOICES = [
+        ('pencil', 'Pencil Drawings'),
+        ('painting', 'Paintings'),
+        ('penart', 'Pen Art'),
+    ]
 
+    drawing_name = models.CharField(max_length=100)
+    drawing_artist = models.CharField(max_length=50)
+    drawing_price = models.IntegerField()
+    drawing_img = models.ImageField(upload_to="drawings/")
+    drawing_category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
 
     def __str__(self):
         return self.drawing_name
-
 
 # register db
 
