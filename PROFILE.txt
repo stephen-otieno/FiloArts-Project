@@ -1,0 +1,2 @@
+powershellHost.UI.RawUI.ForegroundColor = "Green"
+
